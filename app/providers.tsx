@@ -7,9 +7,13 @@ export function Providers({ children }: { children: React.ReactNode }) {
     // Only initialize Lenis on client side
     if (typeof window === 'undefined') return
 
+    let lenisInstance: any = null
+    let rafId: number | null = null
+
     // Dynamic import to avoid SSR issues
-    import('lenis').then((Lenis) => {
-      const lenis = new Lenis.default({
+    import('lenis').then((LenisModule) => {
+      const Lenis = LenisModule.default || LenisModule
+      lenisInstance = new Lenis({
         duration: 1.2,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         orientation: 'vertical',
@@ -20,18 +24,25 @@ export function Providers({ children }: { children: React.ReactNode }) {
       })
 
       function raf(time: number) {
-        lenis.raf(time)
-        requestAnimationFrame(raf)
+        if (lenisInstance) {
+          lenisInstance.raf(time)
+        }
+        rafId = requestAnimationFrame(raf)
       }
 
-      requestAnimationFrame(raf)
-
-      return () => {
-        lenis.destroy()
-      }
+      rafId = requestAnimationFrame(raf)
     }).catch((error) => {
       console.error('Failed to load Lenis:', error)
     })
+
+    return () => {
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId)
+      }
+      if (lenisInstance) {
+        lenisInstance.destroy()
+      }
+    }
   }, [])
 
   return (
