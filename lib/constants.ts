@@ -29,7 +29,7 @@ export const TEAM_MEMBERS = [
   {
     name: 'Jaison James',
     role: 'AI/ML Engineer',
-    image: '/images/portrait-man-smiling-city.jpg',
+    image: '/images/jaisonj.jpg',
     skills: ['Python', 'TensorFlow', 'OpenAI APIs', 'LangChain'],
     github: 'https://github.com/jaisonjames',
     bio: 'Building intelligent automation solutions and AI-powered SaaS applications.',
