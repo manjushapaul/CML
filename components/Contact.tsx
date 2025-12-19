@@ -60,9 +60,25 @@ export function Contact() {
       let errorMessage = 'Failed to send message. Please try again.'
       if (err instanceof Error) {
         errorMessage = err.message
-        // If it's a configuration error, suggest using email directly
-        if (err.message.includes('not configured') || err.message.includes('authentication')) {
-          errorMessage = 'Email service is not configured. Please contact us directly at ' + SITE_CONFIG.email
+        // If it's a configuration error, use mailto fallback
+        if (err.message.includes('not configured') || err.message.includes('Email service')) {
+          // Use mailto as fallback
+          const formData = new FormData(formRef.current!)
+          const name = formData.get('name') as string
+          const email = formData.get('email') as string
+          const message = formData.get('message') as string
+          
+          const subject = encodeURIComponent(`Contact Form: ${name}`)
+          const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)
+          const mailtoLink = `mailto:${SITE_CONFIG.email}?subject=${subject}&body=${body}`
+          
+          window.location.href = mailtoLink
+          setError('Email service not configured. Opening your email client...')
+          setTimeout(() => {
+            setError('')
+          }, 3000)
+          setLoading(false)
+          return
         }
       }
       setError(errorMessage)
