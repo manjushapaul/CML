@@ -40,8 +40,12 @@ export async function POST(request: NextRequest) {
     const gmailAppPassword = process.env.GMAIL_APP_PASSWORD
 
     if (!gmailUser || !gmailAppPassword) {
+      console.error('Gmail credentials missing:', {
+        hasUser: !!gmailUser,
+        hasPassword: !!gmailAppPassword,
+      })
       return NextResponse.json(
-        { error: 'Email service not configured. Please contact the administrator.' },
+        { error: 'Email service is not configured. Please contact us directly at manjushapaul39@gmail.com' },
         { status: 500 }
       )
     }
@@ -70,6 +74,12 @@ export async function POST(request: NextRequest) {
       console.log('Gmail SMTP connection verified successfully')
     } catch (verifyError) {
       console.error('SMTP verification failed:', verifyError)
+      const errorMsg = verifyError instanceof Error ? verifyError.message : String(verifyError)
+      if (errorMsg.includes('Invalid login') || errorMsg.includes('authentication')) {
+        throw new Error('Invalid Gmail credentials. Please check your Gmail App Password.')
+      } else if (errorMsg.includes('ENOTFOUND') || errorMsg.includes('ECONNREFUSED')) {
+        throw new Error('Unable to connect to Gmail SMTP server. Please check your internet connection.')
+      }
       throw new Error('Failed to connect to Gmail SMTP server. Please check your credentials.')
     }
 

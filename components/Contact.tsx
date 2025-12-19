@@ -40,7 +40,9 @@ export function Contact() {
       const data = await response.json()
 
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to send message')
+        // Show the actual error message from the API
+        const errorMsg = data.error || 'Failed to send message'
+        throw new Error(errorMsg)
       }
 
       // Success
@@ -48,9 +50,23 @@ export function Contact() {
       if (formRef.current) {
         formRef.current.reset()
       }
+      
+      // Clear success message after 5 seconds
+      setTimeout(() => {
+        setSuccess(false)
+      }, 5000)
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to send message. Please try again.')
-      console.error(err)
+      // Show user-friendly error message
+      let errorMessage = 'Failed to send message. Please try again.'
+      if (err instanceof Error) {
+        errorMessage = err.message
+        // If it's a configuration error, suggest using email directly
+        if (err.message.includes('not configured') || err.message.includes('authentication')) {
+          errorMessage = 'Email service is not configured. Please contact us directly at ' + SITE_CONFIG.email
+        }
+      }
+      setError(errorMessage)
+      console.error('Contact form error:', err)
     } finally {
       setLoading(false)
     }
