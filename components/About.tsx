@@ -147,7 +147,7 @@ export function About() {
             className="mt-20 text-center max-w-3xl mx-auto"
           >
             <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
-              Code Meld Labs is built for developer trust, whether you're a professional developer working in a large enterprise codebase, a startup founder building your MVP, or anyone in between.
+              Code Meld Labs is built for developer trust, whether you&apos;re a professional developer working in a large enterprise codebase, a startup founder building your MVP, or anyone in between.
             </p>
           </motion.div>
         </motion.div>
