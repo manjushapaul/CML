@@ -285,19 +285,6 @@ export function Navbar() {
             >
               Contact
             </a>
-            
-            {/* Primary Button - Right */}
-            <button
-              onClick={() => {
-                // Close dropdown first
-                setIsCaseStudiesOpen(false)
-                // Then handle the scroll
-                scrollToContact()
-              }}
-              className="ml-4 rounded-full bg-gray-900 px-6 py-2.5 text-sm font-semibold text-white hover:bg-gray-800 transition-all duration-200 shadow-sm hover:shadow-md relative z-[60]"
-            >
-              Get Started
-            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -372,13 +359,6 @@ export function Navbar() {
             >
               Contact
             </a>
-            
-            <button
-              onClick={scrollToContact}
-              className="w-full mt-4 rounded-full bg-gray-900 px-6 py-2.5 text-sm font-semibold text-white hover:bg-gray-800 transition-all duration-200"
-            >
-              Get Started
-            </button>
           </div>
         </div>
       )}
