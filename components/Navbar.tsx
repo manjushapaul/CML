@@ -132,37 +132,6 @@ export function Navbar() {
     }
   }
 
-  const scrollToContact = () => {
-    setIsOpen(false)
-    setIsCaseStudiesOpen(false)
-    
-    // Check if we're on the home page
-    if (pathname === '/') {
-      // On home page - just scroll to contact section
-      const element = document.getElementById('contact')
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
-      }
-    } else {
-      // Not on home page - navigate to home page with contact hash, then scroll
-      router.push('/#contact')
-      setTimeout(() => {
-        const element = document.getElementById('contact')
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' })
-        } else {
-          // If element not found, try again after a bit more delay
-          setTimeout(() => {
-            const retryElement = document.getElementById('contact')
-            if (retryElement) {
-              retryElement.scrollIntoView({ behavior: 'smooth' })
-            }
-          }, 200)
-        }
-      }, 300)
-    }
-  }
-
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
