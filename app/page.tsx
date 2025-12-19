@@ -10,10 +10,10 @@ export default function Home() {
   return (
     <>
       <HeroAntigravityStyle />
-      <ProfileSection />
       <Projects />
       <Services />
       <Testimonials />
+      <ProfileSection />
       <Contact />
       <BackToTop />
     </>
