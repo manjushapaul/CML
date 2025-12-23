@@ -77,7 +77,7 @@ export const PROJECTS = [
     description: 'Landing page design for automation platform with clean and professional layout.',
     image: '/images/nexcent.png',
     tags: ['Python', 'FastAPI', 'Celery', 'React'],
-    liveUrl: 'https://automation-suite.vercel.app',
+    liveUrl: '',
     githubUrl: 'https://github.com/code-meld-labs/automation-suite',
     featured: false,
   },

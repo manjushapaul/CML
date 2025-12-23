@@ -37,3 +37,4 @@ export const getPersonStructuredData = (member: typeof TEAM_MEMBERS[0]) => ({
 
 
 
+
