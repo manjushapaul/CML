@@ -29,7 +29,7 @@ export const TEAM_MEMBERS = [
   {
     name: 'Jaison James',
     role: 'AI/ML Engineer',
-    image: '/images/jaison.JPG',
+    image: '/images/jaisonj.jpg',
     skills: ['Python', 'TensorFlow', 'OpenAI APIs', 'LangChain'],
     github: 'https://github.com/jaisonjames',
     bio: 'Building intelligent automation solutions and AI-powered SaaS applications.',
@@ -57,17 +57,6 @@ export const PROJECTS = [
     tags: ['Next.js', 'Chart.js', 'WebSocket', 'TailwindCSS'],
     liveUrl: 'https://crypto-latest.vercel.app/',
     githubUrl: 'https://github.com/code-meld-labs/crypto-dashboard',
-    featured: true,
-  },
-  {
-    id: 3,
-    title: 'AI Chatbot Landing Page',
-    category: 'AI',
-    description: 'Landing page design for AI chatbot SaaS platform with modern aesthetics.',
-    image: '/images/ai.png',
-    tags: ['Next.js', 'OpenAI', 'LangChain', 'Redis'],
-    liveUrl: 'https://ai-chatbot-saas.vercel.app',
-    githubUrl: 'https://github.com/code-meld-labs/ai-chatbot',
     featured: true,
   },
   {
@@ -124,6 +113,17 @@ export const PROJECTS = [
     liveUrl: 'https://peakplumbingandgas.com.au',
     githubUrl: 'https://github.com/code-meld-labs/peak-group',
     featured: false,
+  },
+  {
+    id: 3,
+    title: 'AI Chatbot Landing Page',
+    category: 'AI',
+    description: 'Landing page design for AI chatbot SaaS platform with modern aesthetics.',
+    image: '/images/ai.png',
+    tags: ['Next.js', 'OpenAI', 'LangChain', 'Redis'],
+    liveUrl: 'https://ai-chatbot-saas.vercel.app',
+    githubUrl: 'https://github.com/code-meld-labs/ai-chatbot',
+    featured: true,
   },
 ]
 
@@ -196,5 +196,3 @@ export const TESTIMONIALS = [
     image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop',
   },
 ]
-
-

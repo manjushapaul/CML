@@ -58,13 +58,13 @@ export function Projects() {
                 className="block w-full relative"
               >
                 {/* Background Image - Natural Height for Masonry */}
-                <div className="relative w-full bg-gray-100 rounded-xl overflow-hidden">
+                <div className={`relative w-full bg-gray-100 rounded-xl overflow-hidden ${project.id === 6 ? 'max-h-[400px]' : ''}`}>
                   <Image
                     src={project.image}
                     alt={project.title}
                     width={2000}
                     height={1500}
-                    className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-500"
+                    className={`w-full ${project.id === 6 ? 'h-full object-cover' : 'h-auto object-contain'} group-hover:scale-105 transition-transform duration-500`}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                   
